@@ -1,27 +1,26 @@
 name: Enviar Cursos Gratuitos a Telegram
-name: Enviar Cursos Gratuitos a Telegram
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 8 * * 1'
-  workflow_dispatch:
 
 jobs:
   ejecutar-bot:
     runs-on: ubuntu-latest
     steps:
-      - name: Descargar el codigo del repositorio
+      - name: Descargar el codigo
         uses: actions/checkout@v4
 
-      - name: Configurar entorno de Python
+      - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Instalar libreria de peticiones
+      - name: Instalar dependencias
         run: pip install requests
 
-      - name: Ejecutar el buscador de cursos
+      - name: Ejecutar script
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
