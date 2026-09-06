@@ -1,10 +1,10 @@
 name: Enviar Cursos Gratuitos a Telegram
+name: Enviar Cursos Gratuitos a Telegram
 
 on:
   schedule:
-    # Se ejecuta todos los lunes a las 08:00 AM (hora UTC)
     - cron: '0 8 * * 1'
-  workflow_dispatch: # Permite ejecutarlo manualmente cuando quieras
+  workflow_dispatch:
 
 jobs:
   ejecutar-bot:
@@ -26,4 +26,3 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python buscador_cursos.py
-
